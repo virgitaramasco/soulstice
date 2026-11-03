@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="Soulstice — Milano. Underground electronic music, events, podcasts, and collective experiences.">
+  <meta name="theme-color" content="#000000">
+  <title>Soulstice — Milano</title>
+
+  <!-- Google Fonts: Inter Tight fallback for Swiss typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ==========================================================================
+       FULL SCREEN LOADER (Usa il logo ufficiale vettoriale Soulstice)
+       ========================================================================== -->
+  <div id="app-loader" role="status" aria-label="Loading Soulstice">
+    <div class="loader-inner">
+      <svg class="loader-mark" viewBox="12 225 575 330" fill="currentColor" aria-hidden="true">
+        <path opacity="0.85" d="M335,339.3c29.8,0,59.6,0.2,89.4-0.1c8-0.1,8.7,2.6,7.4,6.2c-6.5,18.2-20.3,32.8-48.3,39.4c-9.4,2.2-19.8,3.2-29.8,3.3c-35.6,0.3-71.3,0-107,0c-2.8,0-5.7-0.1-8.3,0.4c-1.5,0.3-3.4,1.7-3.4,2.5c0,0.9,1.9,2.4,3.4,2.6c3.2,0.5,6.6,0.3,9.9,0.3c33.6,0,67.2,0,100.9-0.1c4,0,6.6,0.3,7.6,3.4c4.5,13.9,16.8,20.5,38.9,21.4c22,0.9,37.8,12.6,36.3,26.8c-1.2,11.1-14.4,19.8-32.5,21.9c-8.6,1-17.9,1.8-25.4,4.5c-12,4.2-17.8,11.7-17.7,20.8c0,3.7-2,5-7.5,5c-34.4-0.1-68.8-0.1-103.1,0c-23.7,0-47.4,0.1-71,0.1c-1.3,0-2.5,0.1-3.8,0.1c-10.2-0.1-12-1.5-10.2-8.2c5.8-21.8,32.8-38.8,66.6-40.4c22.6-1.1,45.3-0.5,68-0.5c18.3,0,36.7,0.1,55,0c2.3,0,6.2-1.4,6.5-2.5c1-3.1-3.1-3.2-6.5-3.2c-26.7,0-53.5,0-80.2,0c-9.2,0-18.3-0.1-27.5,0c-4,0-6.5-0.5-7.3-3.7c-3.1-11.9-16.9-19.8-35.5-21c-17.2-1.1-30.9-5.8-37-17.1c-8.5-15.6,7.1-31.1,32.5-31.9c18.9-0.6,31.8-6.1,38.4-17.7c1-1.8,2-3.9,1.6-5.8c-1.1-5.7,3.2-6.6,10.7-6.6C275.4,339.4,305.2,339.3,335,339.3z" />
+        <path d="M301.7,230.2c27.1-1.9,58.6,11.1,89.8,30c33.8,20.5,68.2,37.4,102.1,57.3c23.7,13.9,46.6,32,67.2,57.5c4.3,5.3,8.2,11.9,11.5,19c10.1,21.7,8.3,44-5.1,59.4c-6.9,7.9-14.9,13.2-22.2,20c-23.3,21.6-46.2,44.5-69.7,65c-56.2,48.9-115.4,75.1-178.5,67.3c-20-2.5-39-12.7-58.1-23.4c-24.8-13.9-50.3-24-75.6-34.4c-36.1-14.8-72.4-28.5-105.7-58.5C46.3,479.6,36,467.6,26,455.1c-4.1-5.1-7.3-13.5-9.8-21.4c-4.5-14.2-3.3-30,3.1-41.9c3.3-6.1,7-12.2,11.3-15.7c38.6-32.4,76.5-67.5,116.1-95.3C194.2,247.4,244.1,229.9,301.7,230.2z M256.5,548.4c25.1-0.9,50.9-1.2,76-7.5c30.8-7.8,61.1-20.5,91.7-30.5c42-13.8,83.9-28.9,124.5-53.2c5.9-3.5,11.6-9.4,16.5-16.1c6.8-9.4,8.2-23.7,3.3-36.3c-3.5-9.1-7.9-17.9-13-24.2c-19.6-24.5-42-38.2-64.8-49.7c-49.4-24.9-100.1-29-151.1-28.9c-67.5,0.1-133.2,17.6-197.2,54.9c-23.7,13.8-47.1,29.1-70.6,44.3c-4.7,3-9.1,7.6-13.1,12.9c-6.7,8.9-7.9,20.4-3.4,32.7c2.4,6.7,5.8,12.7,9.3,17.7c17.9,24.7,39,38.5,60.3,50.5C167.6,539,211.7,547.8,256.5,548.4z" />
+      </svg>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       1. NAVBAR FISSA NERA
+       ========================================================================== -->
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="Soulstice - Back to top">
+      <img src="assets/img/logo-soulstice.svg" alt="" class="brand-logo-icon" width="34" height="20" aria-hidden="true">
+      <span>SOULSTICE</span>
+    </a>
+
+    <nav class="nav-center" id="main-nav" aria-label="Main Navigation">
+      <a href="#next" class="nav-link">Next events</a>
+      <a href="#events" class="nav-link">Events</a>
+      <a href="#podcast" class="nav-link">Podcast</a>
+      <a href="#artists" class="nav-link">Soul Artists</a>
+    </nav>
+
+    <div class="header-right">
+      <!-- TODO: Collegare il pulsante "Buy tickets" al link della biglietteria (impostato in TICKETS_URL in js/data.js) -->
+      <a class="btn-tickets" id="buy-tickets-btn" href="#next">BUY TICKETS</a>
+      <button class="btn-burger" id="burger-btn" aria-label="Open navigation menu" aria-expanded="false" aria-controls="main-nav">
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ==========================================================================
+       MAIN CONTENT
+       ========================================================================== -->
+  <main id="top">
+
+    <!-- 2. HERO: VIDEO FULL BLEED -->
+    <div class="hero">
+      <!-- 
+        TODO: Inserire il video dell'hero definitivo nella sorgente sottostante:
+        Esempio: <video class="hero-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true" src="assets/video/hero.mp4"></video>
+      -->
+      <video class="hero-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+        <!-- Inserisci qui il file video hero, es: <source src="assets/video/hero.mp4" type="video/mp4"> -->
+      </video>
+      <div class="hero-overlay"></div>
+
+      <!-- h1 visivamente nascosto per piena accessibilità -->
+      <h1 class="visually-hidden">Soulstice</h1>
+    </div>
+
+    <!-- 3. NEXT EVENTS (Black Background, 4:5 Card Grid) -->
+    <!-- TODO: Aggiornare date, titoli, venue e immagini degli eventi futuri in js/data.js -->
+    <section id="next" class="section-dark">
+      <div class="section-header">
+        <h2 class="section-title">NEXT EVENTS</h2>
+        <span class="section-meta">UPCOMING DATES</span>
+      </div>
+      <div class="grid" id="next-grid">
+        <!-- Rendered by js/main.js -->
+      </div>
+    </section>
+
+    <!-- 4. EVENTS (White Background, 4:5 Card Grid, View More) -->
+    <!-- TODO: Inserire nuove immagini degli eventi passati in js/data.js -->
+    <section id="events" class="section-light">
+      <div class="section-header">
+        <h2 class="section-title">EVENTS</h2>
+        <span class="section-meta">ARCHIVE</span>
+      </div>
+      <div class="grid" id="events-grid">
+        <!-- Rendered by js/main.js -->
+      </div>
+      <div class="section-footer">
+        <button type="button" class="btn-more" id="events-toggle-btn" aria-expanded="false">VIEW MORE</button>
+      </div>
+    </section>
+
+    <!-- 5. PODCAST (Black Background, Episode List) -->
+    <!-- TODO: Inserire il link vero di SoundCloud nel campo SOUNDCLOUD_URL o nei singoli episodi in js/data.js -->
+    <section id="podcast" class="section-dark">
+      <div class="section-header">
+        <h2 class="section-title">PODCAST</h2>
+        <a class="section-action" id="sc-channel-link" href="#" target="_blank" rel="noopener noreferrer">LISTEN ON SOUNDCLOUD</a>
+      </div>
+      <div class="podcast-list" id="podcast-list">
+        <!-- Rendered by js/main.js -->
+      </div>
+    </section>
+
+    <!-- 6. SOUL ARTISTS (White Background, 4:5 Card Grid, Hover/Touch Video Preview) -->
+    <!-- TODO: Inserire video e foto degli artisti nei campi v e p in js/data.js -->
+    <section id="artists" class="section-light">
+      <div class="section-header">
+        <h2 class="section-title">SOUL ARTISTS</h2>
+        <span class="section-meta">ROSTER</span>
+      </div>
+      <div class="grid" id="artists-grid">
+        <!-- Rendered by js/main.js -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==========================================================================
+       FOOTER
+       ========================================================================== -->
+  <footer class="site-footer">
+    <div class="footer-newsletter">
+      <div class="newsletter-heading">
+        <h2 class="newsletter-title">NEWSLETTER</h2>
+        <p class="newsletter-desc">SUBSCRIBE FOR EARLY ACCESS TO TICKETS, EXCLUSIVE LINEUPS AND SECRET SESSIONS.</p>
+      </div>
+      <form class="newsletter-form" id="newsletter-form" novalidate>
+        <div class="newsletter-input-wrap">
+          <label for="newsletter-email" class="visually-hidden">Email Address</label>
+          <input 
+            type="email" 
+            id="newsletter-email" 
+            name="email" 
+            class="newsletter-input" 
+            placeholder="ENTER YOUR EMAIL" 
+            required 
+            autocomplete="email"
+            spellcheck="false"
+          >
+          <button type="submit" class="btn-newsletter">SUBSCRIBE</button>
+        </div>
+        <div class="newsletter-feedback" id="newsletter-feedback" aria-live="polite"></div>
+      </form>
+    </div>
+
+    <div class="footer-row">
+      <span>MILANO, ITALY</span>
+      <a href="mailto:info@soulstice.it" id="footer-email">INFO@SOULSTICE.IT</a>
+      <a href="https://www.instagram.com/soul_stice_?utm_source=ig_web_button_share_sheet&rpxt=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" id="footer-instagram">INSTAGRAM</a>
+      <a href="https://soundcloud.com/soulstice-247506189" target="_blank" rel="noopener noreferrer" id="footer-soundcloud">SOUNDCLOUD</a>
+      <a href="https://open.spotify.com/playlist/43ShQEjmuaYXQjMpZoBzZC?si=997d97c9ac7548d3" target="_blank" rel="noopener noreferrer" id="footer-spotify">SPOTIFY</a>
+      <span>© 2026 SOULSTICE</span>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       NATIVE DIALOGS
+       ========================================================================== -->
+
+  <!-- Event Dialog (Portrait 4:5 Image, Title, Date, Venue) -->
+  <dialog id="event-dialog" aria-labelledby="event-dialog-title">
+    <button type="button" class="dialog-close-btn" id="event-dialog-close" aria-label="Close event dialog">×</button>
+    <div class="event-dialog-img-wrap" id="event-dialog-img"></div>
+    <div class="event-dialog-info">
+      <h3 class="event-dialog-title" id="event-dialog-title"></h3>
+      <div class="event-dialog-meta" id="event-dialog-meta"></div>
+    </div>
+  </dialog>
+
+  <!-- Artist Modal (Dekmantel RADAR Inspired, 16:9 Video, Bio, Detail Photo) -->
+  <dialog id="artist-dialog" aria-labelledby="artist-radar-name">
+    <button type="button" class="dialog-close-btn" id="artist-dialog-close" aria-label="Close artist dialog">×</button>
+    <div class="radar-layout">
+      <div class="radar-header">
+        <h2 class="radar-name" id="artist-radar-name"></h2>
+        <p class="radar-bio" id="artist-radar-bio"></p>
+      </div>
+
+      <div class="radar-photo-wrap" id="artist-radar-photo"></div>
+
+      <div class="radar-video-wrap">
+        <video id="artist-radar-video" playsinline preload="metadata"></video>
+        <button type="button" class="radar-play-btn" id="artist-radar-play" aria-label="Play video">
+          <span class="radar-play-icon"></span>
+        </button>
+        <div class="video-buffering-loader" id="artist-video-loader" role="status" aria-label="Buffering video">
+          <!-- Logo ufficiale animato Soulstice (identico al preloader) -->
+          <svg class="loader-mark" viewBox="12 225 575 330" fill="currentColor" aria-hidden="true" style="width:64px;height:38px;">
+            <path opacity="0.85" d="M335,339.3c29.8,0,59.6,0.2,89.4-0.1c8-0.1,8.7,2.6,7.4,6.2c-6.5,18.2-20.3,32.8-48.3,39.4c-9.4,2.2-19.8,3.2-29.8,3.3c-35.6,0.3-71.3,0-107,0c-2.8,0-5.7-0.1-8.3,0.4c-1.5,0.3-3.4,1.7-3.4,2.5c0,0.9,1.9,2.4,3.4,2.6c3.2,0.5,6.6,0.3,9.9,0.3c33.6,0,67.2,0,100.9-0.1c4,0,6.6,0.3,7.6,3.4c4.5,13.9,16.8,20.5,38.9,21.4c22,0.9,37.8,12.6,36.3,26.8c-1.2,11.1-14.4,19.8-32.5,21.9c-8.6,1-17.9,1.8-25.4,4.5c-12,4.2-17.8,11.7-17.7,20.8c0,3.7-2,5-7.5,5c-34.4-0.1-68.8-0.1-103.1,0c-23.7,0-47.4,0.1-71,0.1c-1.3,0-2.5,0.1-3.8,0.1c-10.2-0.1-12-1.5-10.2-8.2c5.8-21.8,32.8-38.8,66.6-40.4c22.6-1.1,45.3-0.5,68-0.5c18.3,0,36.7,0.1,55,0c2.3,0,6.2-1.4,6.5-2.5c1-3.1-3.1-3.2-6.5-3.2c-26.7,0-53.5,0-80.2,0c-9.2,0-18.3-0.1-27.5,0c-4,0-6.5-0.5-7.3-3.7c-3.1-11.9-16.9-19.8-35.5-21c-17.2-1.1-30.9-5.8-37-17.1c-8.5-15.6,7.1-31.1,32.5-31.9c18.9-0.6,31.8-6.1,38.4-17.7c1-1.8,2-3.9,1.6-5.8c-1.1-5.7,3.2-6.6,10.7-6.6C275.4,339.4,305.2,339.3,335,339.3z" />
+            <path d="M301.7,230.2c27.1-1.9,58.6,11.1,89.8,30c33.8,20.5,68.2,37.4,102.1,57.3c23.7,13.9,46.6,32,67.2,57.5c4.3,5.3,8.2,11.9,11.5,19c10.1,21.7,8.3,44-5.1,59.4c-6.9,7.9-14.9,13.2-22.2,20c-23.3,21.6-46.2,44.5-69.7,65c-56.2,48.9-115.4,75.1-178.5,67.3c-20-2.5-39-12.7-58.1-23.4c-24.8-13.9-50.3-24-75.6-34.4c-36.1-14.8-72.4-28.5-105.7-58.5C46.3,479.6,36,467.6,26,455.1c-4.1-5.1-7.3-13.5-9.8-21.4c-4.5-14.2-3.3-30,3.1-41.9c3.3-6.1,7-12.2,11.3-15.7c38.6-32.4,76.5-67.5,116.1-95.3C194.2,247.4,244.1,229.9,301.7,230.2z M256.5,548.4c25.1-0.9,50.9-1.2,76-7.5c30.8-7.8,61.1-20.5,91.7-30.5c42-13.8,83.9-28.9,124.5-53.2c5.9-3.5,11.6-9.4,16.5-16.1c6.8-9.4,8.2-23.7,3.3-36.3c-3.5-9.1-7.9-17.9-13-24.2c-19.6-24.5-42-38.2-64.8-49.7c-49.4-24.9-100.1-29-151.1-28.9c-67.5,0.1-133.2,17.6-197.2,54.9c-23.7,13.8-47.1,29.1-70.6,44.3c-4.7,3-9.1,7.6-13.1,12.9c-6.7,8.9-7.9,20.4-3.4,32.7c2.4,6.7,5.8,12.7,9.3,17.7c17.9,24.7,39,38.5,60.3,50.5C167.6,539,211.7,547.8,256.5,548.4z" />
+          </svg>
+        </div>
+        <div class="radar-no-video" id="artist-radar-no-video">
+          <span>VIDEO NOT UPLOADED YET</span>
+          <small>ADD THE URL IN THE ARTIST'S "v" FIELD IN JS/DATA.JS</small>
+        </div>
+      </div>
+
+      <div class="radar-latest" id="artist-radar-latest"></div>
+    </div>
+  </dialog>
+
+  <!-- JavaScript: Caricamento dati e logica applicativa -->
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

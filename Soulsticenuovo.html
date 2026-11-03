@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Soulstice</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--k:#000;--w:#fff;--g:#8a8a8a;--pad:clamp(16px,2.2vw,40px);--nav:68px;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--nav) + env(safe-area-inset-top,0px))}
+body{margin:0;background:var(--k);color:var(--w);font-family:"Inter Tight","Helvetica Neue",Helvetica,Arial,sans-serif;font-size:16px;line-height:1.4;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+:focus-visible{outline:2px solid currentColor;outline-offset:3px}
+.display{font-weight:700;letter-spacing:-.045em;line-height:.95}
+/* NAV */
+header{position:fixed;inset:0 0 auto 0;z-index:20;background:var(--k);height:calc(var(--nav) + env(safe-area-inset-top,0px));padding:env(safe-area-inset-top,0px) var(--pad) 0;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.logo{font-size:30px}
+nav{display:flex;gap:28px;font-size:15px;font-weight:500}
+nav a{padding:4px 0;border-bottom:2px solid transparent}
+nav a:hover,nav a.on{border-color:var(--w)}
+.cta{background:var(--w);color:var(--k);border-radius:0;padding:12px 20px;font-weight:600;font-size:15px;line-height:1;white-space:nowrap}
+.cta:hover{background:var(--g)}
+.burger{display:none;width:44px;height:44px;border:1px solid #444;border-radius:0;position:relative}
+.burger i,.burger i::before{position:absolute;left:13px;width:16px;height:2px;background:var(--w);content:""}
+.burger i{top:21px}.burger i::before{top:-5px;left:0;box-shadow:0 10px 0 var(--w)}
+.right{display:flex;align-items:center;gap:10px}
+/* HERO */
+.hero{position:relative;height:100svh;min-height:520px;display:flex;align-items:flex-end;overflow:hidden;background:#111}
+.hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.1)}
+.hero::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(115deg,#1a1a1a 0 2px,#050505 2px 90px);opacity:.9}
+.hero video{z-index:1}
+.hero::after{content:"";position:absolute;inset:0;z-index:2;background:linear-gradient(transparent 50%,rgba(0,0,0,.85))}
+.hero .in{position:relative;z-index:3;width:100%;padding:0 var(--pad) var(--pad)}
+.hero h1{margin:0;font-size:clamp(72px,21vw,360px);margin-left:-.03em}
+.hero p{margin:18px 0 0;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-weight:500;max-width:100%}
+/* SECTIONS */
+section{padding:0 var(--pad) clamp(64px,9vw,120px)}
+.sh{border-top:2px solid currentColor;padding-top:16px;margin-bottom:clamp(20px,3vw,40px);display:flex;justify-content:space-between;align-items:baseline;gap:16px}
+.sh h2{margin:0;font-size:clamp(28px,3.6vw,52px)}
+.sh span{color:var(--g);font-weight:600;font-size:14px}
+.light{background:var(--w);color:var(--k)}
+.light .sh span{color:#555}
+.pt{padding-top:clamp(40px,6vw,80px)}
+/* NEXT EVENTS */
+.row{display:grid;grid-template-columns:120px 1fr 1fr 160px;gap:16px;align-items:center;padding:22px 0;border-top:1px solid #333}
+.row:last-child{border-bottom:1px solid #333}
+.row .d{font-size:44px}
+.row .t{font-size:clamp(22px,2.4vw,32px);font-weight:700;line-height:1.1}
+.row .v{color:var(--g)}
+.row .cta{justify-self:end;background:none;color:var(--w);border:1.5px solid var(--w)}
+.row .cta:hover{background:var(--w);color:var(--k)}
+.row .cta.off{border-color:#444;color:#666;pointer-events:none}
+/* EVENTS */
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.card{display:block;width:100%;text-align:left;position:relative;aspect-ratio:4/5;overflow:hidden;background:#d8d8d8}
+.ph{position:absolute;inset:0;background:var(--bg);filter:grayscale(1)}
+.card .cap{position:absolute;inset:auto 0 0;padding:14px;color:var(--w);background:linear-gradient(transparent,rgba(0,0,0,.8));font-weight:700;font-size:18px;line-height:1.15}
+.card .cap small{display:block;font-weight:500;font-size:13px;letter-spacing:.06em;opacity:.8}
+.card:hover .ph,.artist:hover .ph{transform:scale(1.04)}
+.ph{transition:transform .5s ease}
+.tk{position:absolute;top:0;right:0;z-index:2;background:var(--w);color:var(--k);padding:8px 12px;font-weight:600;font-size:13px;line-height:1}
+.more{margin-top:32px;border:1.5px solid currentColor;padding:12px 20px;font-weight:600;font-size:15px;line-height:1}
+.more:hover{background:var(--k);color:var(--w)}
+.card.hid{display:none}.grid.open .card.hid{display:block}
+.th{position:relative;display:block;width:100%;aspect-ratio:1;overflow:hidden;background:#222}
+.th img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1)}
+.ev-img{position:relative;aspect-ratio:4/5;background:#ccc;overflow:hidden;width:100%}
+#evDlg{width:min(560px,100vw,calc((100svh - 72px)*.8))}
+.ev-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1)}
+.ev-cap{padding:16px 24px;font-weight:600}
+.tk.off{background:#333;color:#aaa}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.sh a{font-weight:600;font-size:14px;border-bottom:2px solid currentColor}
+/* PODCAST */
+.ep{display:grid;grid-template-columns:88px 1fr auto 56px;gap:20px;align-items:center;padding:20px 0;border-top:1px solid #333;width:100%;text-align:left}
+.light .ep{border-color:#ccc}
+.ep:last-child{border-bottom:1px solid #ccc}
+.ep .n{font-size:40px}
+.ep b{font-size:clamp(20px,2.2vw,28px);line-height:1.1;display:block}
+.ep em{font-style:normal;color:#555;font-size:14px}
+.ep .len{font-weight:600}
+.play{width:48px;height:48px;border-radius:0;border:1.5px solid currentColor;position:relative}
+.play::after{content:"";position:absolute;left:19px;top:14px;border:10px solid transparent;border-left:15px solid currentColor;border-right:0}
+.ep:hover .play{background:var(--w)}
+.ep:hover .play::after{border-left-color:var(--k)}
+.ep[aria-pressed=true] .play{background:var(--k)}
+.ep[aria-pressed=true] .play::after{border:0;left:16px;top:15px;width:5px;height:18px;border-left:5px solid var(--w);border-right:5px solid var(--w);box-sizing:content-box;width:6px;height:18px}
+.bar{height:3px;background:#ddd;margin-top:10px;display:none}
+.ep[aria-pressed=true] .bar{display:block}
+.bar i{display:block;height:100%;width:0;background:var(--k)}
+/* ARTISTS */
+.artists{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.artist{text-align:left;display:block;width:100%}
+.artist .fr{position:relative;aspect-ratio:3/4;overflow:hidden;background:#222}
+.artist b{display:block;margin-top:10px;font-size:clamp(20px,2vw,26px);font-stretch:62%;font-weight:800;text-transform:uppercase;line-height:1}
+.artist span{color:var(--g);font-size:14px}
+.card.artist video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1)}
+.pb{position:absolute;left:50%;top:50%;width:64px;height:64px;margin:-32px 0 0 -32px;background:var(--k);z-index:2;pointer-events:none}
+.pb::after{content:"";position:absolute;left:26px;top:21px;border:11px solid transparent;border-left:17px solid var(--w);border-right:0}
+.card.artist:hover .pb{background:var(--w)}
+.card.artist:hover .pb::after{border-left-color:var(--k)}
+.mvb{position:absolute;inset:0;z-index:2;background:transparent;width:100%}
+.ld{position:absolute;inset:0;z-index:3;display:none;place-items:center;background:rgba(0,0,0,.55);color:var(--w);pointer-events:none}
+.ld.on{display:grid}
+.ld svg,.lg svg{display:block;width:72px;height:72px}
+#loader{position:fixed;inset:0;z-index:100;background:var(--k);color:var(--w);display:grid;place-items:center;transition:opacity .5s,visibility .5s}
+#loader.done{opacity:0;visibility:hidden}
+.lg circle,.ld circle{transform-box:fill-box;transform-origin:center;animation:pulse 1.2s ease-in-out infinite}
+@keyframes pulse{0%,100%{transform:scale(.45)}50%{transform:scale(1)}}
+/* MODAL */
+dialog{border:0;padding:0;background:var(--w);color:var(--k);width:min(1200px,100vw);max-width:100vw;max-height:100svh;margin:auto}
+dialog::backdrop{background:rgba(0,0,0,.85)}
+.m{display:grid;grid-template-columns:1.4fr 1fr;min-height:min(640px,100svh)}
+.mv{background:#000;position:relative;aspect-ratio:16/9;align-self:start}
+.mv video{width:100%;height:100%;display:block;background:#111}
+.mv .nov{position:absolute;inset:0;display:grid;place-items:center;color:#777;text-align:center;padding:20px;font-size:14px;pointer-events:none}
+.mi{padding:24px;display:flex;flex-direction:column;gap:16px}
+.mi h3{margin:0;font-size:clamp(44px,6vw,84px)}
+.mi p{margin:0;max-width:44ch}
+.mp{position:relative;aspect-ratio:4/3;overflow:hidden;background:#ccc;margin-top:auto}
+.mp img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1)}
+.x{position:absolute;top:12px;right:12px;z-index:3;width:44px;height:44px;border-radius:0;background:var(--k);color:var(--w);font-size:22px;line-height:1}
+.mv-wrap{display:flex;flex-direction:column}
+.mv-wrap .lab{padding:12px 24px;font-weight:600;font-size:14px;color:#555}
+#dlg{width:100vw;max-width:100vw;height:100svh;max-height:100svh;margin:0;overflow:auto;background:var(--k);color:var(--w);padding:calc(76px + env(safe-area-inset-top,0px)) var(--pad) 48px}
+#dlg .x{position:fixed;top:calc(12px + env(safe-area-inset-top,0px));right:var(--pad);background:var(--w);color:var(--k)}
+#dlg .m{display:grid;min-height:0;grid-template-columns:minmax(0,1fr) minmax(180px,300px);grid-template-areas:"t ph" "b ph" "v v" "l l";column-gap:var(--pad);row-gap:20px;align-content:start}
+#dlg .mv-wrap,#dlg .mi{display:contents}
+#dlg h3{grid-area:t;font-size:clamp(40px,7vw,96px);margin:0}
+#dlg p{grid-area:b;font-size:clamp(18px,1.6vw,22px);max-width:40ch;align-self:start}
+#dlg .mp{grid-area:ph;margin:0;aspect-ratio:4/5;align-self:start}
+#dlg .mv{grid-area:v;width:100%;margin-top:clamp(16px,4vw,48px);background:#111}
+#dlg .lab{grid-area:l;padding:0;color:var(--g)}
+@media(max-width:700px){#dlg .m{grid-template-columns:minmax(0,1fr);grid-template-areas:"t" "b" "v" "l" "ph"}#dlg .mp{width:50%;max-width:200px}}
+/* FOOTER */
+footer{padding:0 var(--pad) 32px}
+footer .big{font-size:clamp(64px,22vw,400px);margin:0 0 0 -.03em}
+footer .f{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;color:var(--g);font-size:14px;border-top:2px solid var(--w);padding-top:14px}
+footer .f a:hover{color:var(--w)}
+@media(max-width:1000px){
+ nav{display:none}.burger{display:block}
+ nav.open{display:flex;position:fixed;inset:calc(var(--nav) + env(safe-area-inset-top,0px)) 0 0 0;background:var(--k);flex-direction:column;gap:0;padding:var(--pad);font-weight:700;letter-spacing:-.04em;font-size:56px;line-height:1.05;z-index:19}
+ nav.open a{border:0;padding:8px 0}
+ .grid,.artists{grid-template-columns:repeat(2,1fr)}
+ .row{grid-template-columns:90px 1fr 140px}.row .v{grid-column:2;grid-row:2}.row .d{grid-row:1/3}.row .cta{grid-column:3;grid-row:1/3}
+ .m{grid-template-columns:1fr}.mi{padding:16px}
+}
+@media(max-width:560px){
+ .cta.hd{padding:10px 16px;font-size:16px}
+ .logo{font-size:26px}
+ .row{grid-template-columns:70px 1fr}.row .cta{grid-column:2;grid-row:3;justify-self:start}.row .d{font-size:34px}.row .v{grid-row:2}
+ .ep{grid-template-columns:64px 1fr 48px;gap:14px}.ep .len{display:none}
+ .sh{flex-direction:column;gap:6px}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.ph{transition:none}.lg circle,.ld circle{animation:none}}
+</style>
+</head>
+<body>
+<!-- Loader: replace the placeholder mark (square + circle) with the Soulstice logo -->
+<div id="loader" role="status" aria-label="Loading"><div class="lg"><svg viewBox="0 0 120 120" aria-hidden="true"><rect x="3" y="3" width="114" height="114" fill="none" stroke="currentColor" stroke-width="4"/><circle cx="60" cy="60" r="34" fill="currentColor"/></svg></div></div>
+<header>
+  <a class="logo display" href="#top" aria-label="Soulstice, back to top">Soulstice</a>
+  <nav id="nav" aria-label="Main">
+    <a href="#next">Next events</a>
+    <a href="#events">Events</a>
+    <a href="#podcast">Podcast</a>
+    <a href="#artists">Soul Artists</a>
+  </nav>
+  <div class="right">
+    <a class="cta hd" href="#next">Buy tickets</a>
+    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="nav"><i></i></button>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <!-- Sostituisci con il tuo video: <source src="video/hero.mp4" type="video/mp4"> -->
+    <video autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>
+    <h1 class="vh">Soulstice</h1>
+  </div>
+
+  <section id="next" class="pt">
+    <div class="sh"><h2 class="display">Next events</h2></div>
+    <div class="grid" id="nextList"></div>
+  </section>
+
+  <section id="events" class="light pt">
+    <div class="sh"><h2 class="display">Events</h2></div>
+    <div class="grid" id="evGrid"></div>
+    <button class="more" id="more" aria-expanded="false">View more</button>
+  </section>
+
+  <section id="podcast" class="pt">
+    <div class="sh"><h2 class="display">Podcast</h2><a id="scLink" href="#" target="_blank" rel="noopener">Listen on SoundCloud</a></div>
+    <div id="epList"></div>
+  </section>
+
+  <section id="artists" class="light pt">
+    <div class="sh"><h2 class="display">Soul Artists</h2></div>
+    <div class="artists" id="artGrid"></div>
+  </section>
+</main>
+
+<footer>
+  <div class="f"><span>Milan, Italy</span><a href="mailto:info@soulstice.example">info@soulstice.example</a><a href="#">Instagram</a><a href="#">Resident Advisor</a><span>© 2026 Soulstice</span></div>
+</footer>
+
+<dialog id="evDlg" aria-labelledby="eCap">
+  <button class="x" id="eClose" aria-label="Close">×</button>
+  <div class="ev-img" id="eImg"></div>
+  <div class="ev-cap" id="eCap"></div>
+</dialog>
+
+<dialog id="dlg" aria-labelledby="dName">
+  <button class="x" id="dClose" aria-label="Close">×</button>
+  <div class="m">
+    <div class="mv-wrap">
+      <div class="mv"><video id="dVideo" playsinline preload="metadata"></video><button class="mvb" id="dPlay" aria-label="Play video"><span class="pb"></span></button><div class="ld" id="dLoad" role="status" aria-label="Loading video"></div><div class="nov" id="dNov">Video not uploaded yet.<br>Add the URL in the artist’s “v” field.</div></div>
+      <div class="lab" id="dLab"></div>
+    </div>
+    <div class="mi">
+      <h3 class="display" id="dName"></h3>
+      <p id="dBio"></p>
+      <div class="mp" id="dPhoto"></div>
+    </div>
+  </div>
+</dialog>
+
+<script>
+/* ===== CONTENT: replace with real data. Optional fields: img (event or episode image URL), u (SoundCloud track URL) ===== */
+var SC="https://soundcloud.com/soulstice";
+var NEXT=[
+ {d:"14 Nov",t:"Soulstice Warehouse",v:"Former factory, Milan",g:"#222,#aaa",on:true},
+ {d:"5 Dec",t:"Soulstice × Winter Session",v:"Venue to be announced, Milan",g:"#bbb,#1a1a1a",on:true},
+ {d:"31 Dec",t:"Soulstice New Year",v:"Secret location, Milan",g:"#555,#eee",on:true},
+ {d:"23 Jan",t:"Soulstice Afterhours",v:"Navigli, Milan",g:"#999,#111",on:false}
+];
+var EVENTS=[
+ {t:"Soulstice Summer Closing",s:"September 2026",g:"#444,#bbb"},
+ {t:"Midsummer Open Air",s:"June 2026",g:"#999,#222"},
+ {t:"Spring Warehouse",s:"April 2026",g:"#222,#aaa"},
+ {t:"Soulstice New Year",s:"December 2025",g:"#ccc,#333"},
+ {t:"Autumn Sessions",s:"October 2025",g:"#555,#ddd"},
+ {t:"Open Air Parco",s:"June 2025",g:"#aaa,#111"},
+ {t:"Winter Sessions",s:"February 2025",g:"#333,#999"},
+ {t:"Soulstice Origins",s:"June 2023",g:"#eee,#444"}
+];
+var EPS=[
+ {n:"12",t:"Winter solstice mix",a:"Artist Name",l:"58:20"},
+ {n:"11",t:"From the floor to the living room",a:"Artist Name",l:"61:05"},
+ {n:"10",t:"Live from Soulstice Summer Closing",a:"Artist Name",l:"72:40"},
+ {n:"09",t:"Sunset mix",a:"Artist Name",l:"55:12"}
+];
+var ARTISTS=[
+ {n:"Artist One",b:"Resident since the first events, opening and closing Soulstice nights.",v:"",p:"",ev:"Latest performance: Summer Closing 2026"},
+ {n:"Artist Two",b:"Long, physical sets and a regular guest at the warehouse nights.",v:"",p:"",ev:"Latest performance: Spring Warehouse 2026"},
+ {n:"Artist Three",b:"From open air days to winter nights, the warmest sound in the programme.",v:"",p:"",ev:"Latest performance: Midsummer Open Air 2026"},
+ {n:"Artist Four",b:"Live sets of synthesisers and broken rhythms.",v:"",p:"",ev:"Latest performance: New Year 2025"},
+ {n:"Artist Five",b:"Curates the slow, decompressing hours at the end of the night.",v:"",p:"",ev:"Latest performance: Autumn Sessions 2025"},
+ {n:"Artist Six",b:"Fast rhythms and crate digger selections.",v:"",p:"",ev:"Latest performance: Open Air Parco 2025"},
+ {n:"Artist Seven",b:"Essential grooves, sets built with patience.",v:"",p:"",ev:"Latest performance: Winter Sessions 2025"},
+ {n:"Artist Eight",b:"From the first Soulstice Origins to today.",v:"",p:"",ev:"Latest performance: Soulstice Origins"}
+];
+/* ================================================== */
+var $=function(s){return document.querySelector(s)};
+function grad(a,i){var c=a.split(",");var ang=[20,140,200,320][i%4];return"linear-gradient("+ang+"deg,"+c[0]+","+c[1]+")"}
+
+$("#nextList").innerHTML=NEXT.map(function(e,i){
+ return '<button class="card" data-i="'+i+'" aria-label="Open image: '+e.t+'"><div class="ph" style="--bg:'+grad(e.g,i)+'"></div>'+(e.on?'':'<span class="tk">Sold out</span>')+'<div class="cap"><small>'+e.d+'</small>'+e.t+'<small style="margin-top:4px;letter-spacing:0">'+e.v+'</small></div></button>'
+}).join("");
+
+$("#evGrid").innerHTML=EVENTS.map(function(e,i){
+ return '<button class="card'+(i>3?' hid':'')+'" data-i="'+i+'" aria-label="Open image: '+e.t+'"><div class="ph" style="--bg:'+grad(e.g,i)+'"></div><div class="cap"><small>'+e.s+'</small>'+e.t+'</div></button>'
+}).join("");
+
+$("#epList").innerHTML=EPS.map(function(e,i){
+ return '<a class="ep" href="'+(e.u||SC)+'" target="_blank" rel="noopener"><span class="th" data-i="'+i+'"><span class="ph" style="--bg:'+grad(["#444,#bbb","#bbb,#222","#555,#eee","#111,#999"][i%4],i)+'"></span></span><span><b>'+e.t+'</b><em>Episode '+e.n+', '+e.a+'</em></span><span class="len">'+e.l+'</span><span class="play" aria-hidden="true"></span></a>'
+}).join("");
+$("#scLink").href=SC;
+EPS.forEach(function(e,i){
+ var t=document.querySelector('.th[data-i="'+i+'"]');
+ function put(s){var im=new Image();im.alt="";im.onload=function(){t.appendChild(im)};im.src=s}
+ if(e.img){put(e.img);return}
+ if(!e.u)return;
+ fetch("https://soundcloud.com/oembed?format=json&url="+encodeURIComponent(e.u)).then(function(r){return r.json()}).then(function(j){if(j.thumbnail_url)put(j.thumbnail_url)}).catch(function(){});
+});
+
+var tones=["#2a2a2a,#bbb","#bbb,#222","#555,#eee","#111,#999","#999,#1a1a1a","#ddd,#444","#333,#aaa","#777,#111"];
+$("#artGrid").innerHTML=ARTISTS.map(function(a,i){
+ return '<button class="card artist" data-i="'+i+'" aria-label="Open '+a.n+'"><div class="ph" style="--bg:'+grad(tones[i%8],i)+'"></div>'+(a.v?'<video muted loop playsinline preload="metadata" src="'+a.v+'#t=0.1"></video>':'')+'<div class="cap">'+a.n+'</div></button>'
+}).join("");
+
+var coarse=matchMedia("(hover:none)").matches;
+document.querySelectorAll(".card.artist").forEach(function(c){
+ var v=c.querySelector("video");if(!v||coarse)return;
+ c.addEventListener("mouseenter",function(){v.play().catch(function(){})});
+ c.addEventListener("mouseleave",function(){v.pause()});
+});
+if(coarse&&"IntersectionObserver"in window){
+ var io=new IntersectionObserver(function(es){es.forEach(function(en){var v=en.target.querySelector("video");if(!v)return;if(en.isIntersecting){v.play().catch(function(){})}else{v.pause()}})},{threshold:.6});
+ document.querySelectorAll(".card.artist").forEach(function(c){io.observe(c)});
+}
+
+var dlg=$("#dlg"),vid=$("#dVideo");
+document.querySelectorAll(".artist").forEach(function(b){
+ b.addEventListener("click",function(){
+  var a=ARTISTS[b.dataset.i];
+  $("#dName").textContent=a.n;$("#dBio").textContent=a.b;$("#dLab").textContent=a.ev;
+  vid.controls=false;$("#dLoad").classList.remove("on");
+  if(a.v){vid.preload="metadata";vid.src=a.v;$("#dNov").style.display="none";$("#dPlay").style.display="block"}else{vid.removeAttribute("src");$("#dNov").style.display="grid";$("#dPlay").style.display="none"}
+  $("#dPhoto").innerHTML=a.p?'<img src="'+a.p+'" alt="Photo of '+a.n+'">':'<div class="ph" style="--bg:'+grad(tones[b.dataset.i%8],b.dataset.i)+'"></div>';
+  dlg.showModal();
+ });
+});
+function closeD(){vid.pause();dlg.close()}
+$("#dClose").addEventListener("click",closeD);
+dlg.addEventListener("click",function(e){if(e.target===dlg)closeD()});
+dlg.addEventListener("close",function(){vid.pause()});
+
+var eDlg=$("#evDlg");
+function openEv(list,i){
+ var e=list[i];
+ $("#eImg").innerHTML=e.img?'<img src="'+e.img+'" alt="'+e.t+'">':'<div class="ph" style="--bg:'+grad(e.g,i)+'"></div>';
+ $("#eCap").textContent=e.t+", "+(e.d||e.s)+(e.v?", "+e.v:"");
+ eDlg.showModal();
+}
+[["#nextList",NEXT],["#evGrid",EVENTS]].forEach(function(p){
+ $(p[0]).addEventListener("click",function(ev){var b=ev.target.closest(".card");if(b)openEv(p[1],b.dataset.i)});
+});
+$("#eClose").addEventListener("click",function(){eDlg.close()});
+eDlg.addEventListener("click",function(e){if(e.target===eDlg)eDlg.close()});
+$("#more").addEventListener("click",function(){
+ var o=$("#evGrid").classList.toggle("open");
+ this.textContent=o?"View less":"View more";
+ this.setAttribute("aria-expanded",o);
+});
+
+var nav=$("#nav"),bg=$("#burger");
+bg.addEventListener("click",function(){var o=nav.classList.toggle("open");bg.setAttribute("aria-expanded",o)});
+nav.addEventListener("click",function(e){if(e.target.tagName==="A"){nav.classList.remove("open");bg.setAttribute("aria-expanded","false")}});
+$("#dLoad").innerHTML=$("#loader .lg").innerHTML;
+$("#dPlay").addEventListener("click",function(){vid.controls=true;this.style.display="none";$("#dLoad").classList.add("on");vid.play().catch(function(){})});
+vid.addEventListener("waiting",function(){$("#dLoad").classList.add("on")});
+["playing","error"].forEach(function(n){vid.addEventListener(n,function(){$("#dLoad").classList.remove("on")})});
+function hideLoader(){$("#loader").classList.add("done")}
+window.addEventListener("load",function(){setTimeout(hideLoader,800)});
+setTimeout(hideLoader,4000);
+</script>
+</body>
+</html>
