@@ -31,7 +31,7 @@ const CONTACT_EMAIL = "info@soulstice.it";
 const NEXT = [
   {
     d: "05 NOV",
-    t: "SOULSTICE x J’ADORE NAPOLI — J’ADORE SOULS",
+    t: "SOULSTICE x J’ADORE NAPOLI",
     v: "THE SANCTUARY MILAN",
     on: true,
     img: "assets/img/events/jadore-souls.png",
