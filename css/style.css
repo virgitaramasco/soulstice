@@ -239,20 +239,16 @@ video {
 }
 
 .brand {
-  display: flex;
-  align-items: center;
-  gap: 10px;
   font-size: 24px;
   font-weight: 700;
   line-height: 1;
   letter-spacing: var(--letter-spacing-swiss);
   flex-shrink: 0;
-}
-
-.brand-logo-icon {
-  width: 26px;
-  height: 26px;
-  display: block;
+  color: var(--color-white);
+  text-decoration: none;
+  display: inline-block;
+  margin: 0;
+  padding: 0;
 }
 
 .nav-center {
@@ -369,19 +365,11 @@ video {
 
 @media (max-width: 480px) {
   .site-header {
-    padding-left: 14px;
-    padding-right: 14px;
     gap: 8px;
   }
 
   .brand {
     font-size: 20px;
-    gap: 8px;
-  }
-
-  .brand-logo-icon {
-    width: 22px;
-    height: 22px;
   }
 
   .btn-tickets {
