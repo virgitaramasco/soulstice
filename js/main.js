@@ -331,6 +331,7 @@
     const imgContainer = document.getElementById('event-dialog-img');
     const titleEl = document.getElementById('event-dialog-title');
     const metaEl = document.getElementById('event-dialog-meta');
+    const actionsEl = document.getElementById('event-dialog-actions');
 
     if (!dialog || !closeBtn) return;
 
@@ -348,6 +349,16 @@
       const dateStr = eventData.d || eventData.s || '';
       const locStr = eventData.v ? `• ${eventData.v}` : '';
       metaEl.textContent = `${dateStr} ${locStr}`.trim();
+
+      if (actionsEl) {
+        if (eventData.url) {
+          actionsEl.innerHTML = `<a href="${escapeHtml(eventData.url)}" target="_blank" rel="noopener noreferrer" class="btn-event-link">INFO & TICKETS ↗</a>`;
+          actionsEl.style.display = 'block';
+        } else {
+          actionsEl.innerHTML = '';
+          actionsEl.style.display = 'none';
+        }
+      }
 
       dialog.showModal();
     }

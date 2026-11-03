@@ -30,11 +30,20 @@ const CONTACT_EMAIL = "info@soulstice.it";
  */
 const NEXT = [
   {
+    d: "05 NOV",
+    t: "SOULSTICE x J’ADORE NAPOLI — J’ADORE SOULS",
+    v: "THE SANCTUARY MILAN",
+    on: true,
+    img: "assets/img/events/jadore-souls.png",
+    url: "https://www.instagram.com/thesanctuarymilan/"
+  },
+  {
     d: "20 NOV",
     t: "SOULSTICE — RYAN ELLIOTT & SAOIRSE",
     v: "GATE MILANO",
     on: true,
-    img: "assets/img/events/639281115475728058.jpeg"
+    img: "assets/img/events/639281115475728058.jpeg",
+    url: TICKETS_URL
   }
 ];
 

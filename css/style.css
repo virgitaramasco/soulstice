@@ -1100,6 +1100,29 @@ dialog::backdrop {
   gap: 8px;
 }
 
+.event-dialog-actions {
+  margin-top: 14px;
+}
+
+.btn-event-link {
+  display: inline-block;
+  background-color: var(--color-black);
+  color: var(--color-white);
+  padding: 10px 18px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: var(--letter-spacing-swiss);
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 1px solid var(--color-black);
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+
+.btn-event-link:hover {
+  background-color: transparent;
+  color: var(--color-black);
+}
+
 /* Artist Modal (Dekmantel RADAR Inspired) */
 #artist-dialog {
   width: 100vw;
