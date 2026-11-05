@@ -17,6 +17,7 @@
 
   document.addEventListener('DOMContentLoaded', () => {
     initHeroVideo();
+    initHeaderScroll();
     initTicketsButton();
     initMobileMenu();
     renderNextEvents();
@@ -112,14 +113,31 @@
     }
   }
 
+  function initHeaderScroll() {
+    const header = document.querySelector('.site-header');
+    if (!header) return;
+
+    function onScroll() {
+      const isScrolled = window.scrollY > 30;
+      header.classList.toggle('is-scrolled', isScrolled);
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  }
+
   function initMobileMenu() {
     const burgerBtn = document.getElementById('burger-btn');
     const navMenu = document.getElementById('main-nav');
+    const header = document.querySelector('.site-header');
 
     if (!burgerBtn || !navMenu) return;
 
     burgerBtn.addEventListener('click', () => {
       const isOpen = navMenu.classList.toggle('is-open');
+      if (header) {
+        header.classList.toggle('has-menu-open', isOpen);
+      }
       burgerBtn.setAttribute('aria-expanded', String(isOpen));
     });
 
@@ -127,6 +145,7 @@
     navMenu.addEventListener('click', (e) => {
       if (e.target.tagName === 'A') {
         navMenu.classList.remove('is-open');
+        if (header) header.classList.remove('has-menu-open');
         burgerBtn.setAttribute('aria-expanded', 'false');
       }
     });
@@ -135,6 +154,7 @@
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && navMenu.classList.contains('is-open')) {
         navMenu.classList.remove('is-open');
+        if (header) header.classList.remove('has-menu-open');
         burgerBtn.setAttribute('aria-expanded', 'false');
         burgerBtn.focus();
       }

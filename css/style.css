@@ -228,14 +228,21 @@ video {
   padding-top: var(--sat);
   padding-left: var(--section-pad-x);
   padding-right: var(--section-pad-x);
-  background-color: var(--color-black);
+  background-color: transparent;
   color: var(--color-white);
-  border-bottom: 1px solid var(--color-border-dark);
+  border-bottom: 1px solid transparent;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 16px;
   z-index: 100;
+  transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.site-header.is-scrolled,
+.site-header.has-menu-open {
+  background-color: var(--color-black);
+  border-bottom-color: var(--color-border-dark);
 }
 
 .brand {
@@ -306,7 +313,14 @@ video {
   width: 44px;
   height: 44px;
   position: relative;
-  border: 1px solid #333333;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: transparent;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.site-header.is-scrolled .btn-burger,
+.site-header.has-menu-open .btn-burger {
+  border-color: #333333;
   background: var(--color-black);
 }
 
@@ -433,16 +447,7 @@ video {
 }
 
 .hero-overlay {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.45) 0%,
-    transparent 35%,
-    rgba(0, 0, 0, 0.85) 100%
-  );
-  pointer-events: none;
+  display: none;
 }
 
 .hero-content {
