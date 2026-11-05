@@ -3,8 +3,11 @@
  * Swiss International Design / Dekmantel style
  */
 
-// Biglietteria ufficiale Soulstice (Xceed Gate Milano)
-const TICKETS_URL = "https://xceed.me/en/milano/event/soulstice-ryan-elliot-saoirse/246847/channel/gate-milano";
+// Biglietteria ufficiale Soulstice (DICE - Evento più imminente: J'Adore Napoli)
+const TICKETS_URL = "https://link.dice.fm/IepiVZ5eP7b?sharer_id=6377b3087119360001148573";
+
+// Biglietteria Xceed Gate Milano (Ryan Elliott & Saoirse)
+const GATE_TICKETS_URL = "https://xceed.me/en/milano/event/soulstice-ryan-elliot-saoirse/246847/channel/gate-milano";
 
 // Canale SoundCloud ufficiale Soulstice
 const SOUNDCLOUD_URL = "https://soundcloud.com/soulstice-247506189";
@@ -35,7 +38,7 @@ const NEXT = [
     v: "THE SANCTUARY MILAN",
     on: true,
     img: "assets/img/events/jadore-souls.png",
-    url: "https://www.instagram.com/thesanctuarymilan/"
+    url: "https://link.dice.fm/IepiVZ5eP7b?sharer_id=6377b3087119360001148573"
   },
   {
     d: "20 NOV",
@@ -43,7 +46,7 @@ const NEXT = [
     v: "GATE MILANO",
     on: true,
     img: "assets/img/events/639281115475728058.jpeg",
-    url: TICKETS_URL
+    url: GATE_TICKETS_URL
   }
 ];
 
