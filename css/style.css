@@ -414,6 +414,24 @@ video {
   filter: none !important;
 }
 
+.hero-video-mobile {
+  display: none;
+}
+
+.hero-video-desktop {
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .hero-video-mobile {
+    display: block;
+  }
+
+  .hero-video-desktop {
+    display: none;
+  }
+}
+
 .hero-overlay {
   position: absolute;
   inset: 0;

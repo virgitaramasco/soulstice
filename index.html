@@ -58,12 +58,11 @@
 
     <!-- 2. HERO: VIDEO FULL BLEED -->
     <div class="hero">
-      <!-- 
-        TODO: Inserire il video dell'hero definitivo nella sorgente sottostante:
-        Esempio: <video class="hero-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true" src="assets/video/hero.mp4"></video>
-      -->
-      <video class="hero-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
-        <!-- Inserisci qui il file video hero, es: <source src="assets/video/hero.mp4" type="video/mp4"> -->
+      <video class="hero-video hero-video-desktop" autoplay muted loop playsinline preload="auto" poster="assets/video/hero-desktop-poster.jpg" aria-hidden="true">
+        <source src="assets/video/hero-desktop.mp4" type="video/mp4">
+      </video>
+      <video class="hero-video hero-video-mobile" autoplay muted loop playsinline preload="auto" poster="assets/video/hero-mobile-poster.jpg" aria-hidden="true">
+        <source src="assets/video/hero-mobile.mp4" type="video/mp4">
       </video>
       <div class="hero-overlay"></div>
 

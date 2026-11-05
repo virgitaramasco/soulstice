@@ -16,6 +16,7 @@
   const ARTISTS = data.ARTISTS || [];
 
   document.addEventListener('DOMContentLoaded', () => {
+    initHeroVideo();
     initTicketsButton();
     initMobileMenu();
     renderNextEvents();
@@ -28,6 +29,47 @@
     initScrollAnimations();
     initLoader();
   });
+
+  /* ==========================================================================
+     0. HERO RESPONSIVE VIDEO
+     ========================================================================== */
+
+  function initHeroVideo() {
+    const desktopVideo = document.querySelector('.hero-video-desktop');
+    const mobileVideo = document.querySelector('.hero-video-mobile');
+    if (!desktopVideo && !mobileVideo) return;
+
+    function handleVideoPlayback() {
+      const isMobile = window.innerWidth <= 768;
+      const activeVideo = isMobile ? mobileVideo : desktopVideo;
+      const inactiveVideo = isMobile ? desktopVideo : mobileVideo;
+
+      if (inactiveVideo) {
+        inactiveVideo.pause();
+      }
+      if (activeVideo) {
+        const playPromise = activeVideo.play();
+        if (playPromise !== undefined) {
+          playPromise.catch(() => {
+            activeVideo.muted = true;
+            activeVideo.play().catch(() => {});
+          });
+        }
+      }
+    }
+
+    handleVideoPlayback();
+    window.addEventListener('resize', handleVideoPlayback, { passive: true });
+
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        if (desktopVideo) desktopVideo.pause();
+        if (mobileVideo) mobileVideo.pause();
+      } else {
+        handleVideoPlayback();
+      }
+    });
+  }
 
   /* ==========================================================================
      1. TICKETS & HEADER NAVIGATION
