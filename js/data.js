@@ -41,6 +41,14 @@ const NEXT = [
     url: "https://link.dice.fm/IepiVZ5eP7b?sharer_id=6377b3087119360001148573"
   },
   {
+    d: "13 NOV",
+    t: "SOULSTICE — ROI PEREZ, LEMME, NIIO",
+    v: "OFFICINA MILANO",
+    on: true,
+    img: "assets/img/events/flyer-13-11.jpg",
+    url: "https://xceed.me/en/milano/event/soulstice-at-officina-milano-1/250657/channel/soulstice-1"
+  },
+  {
     d: "20 NOV",
     t: "SOULSTICE — RYAN ELLIOTT & SAOIRSE",
     v: "GATE MILANO",
